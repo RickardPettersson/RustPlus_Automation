@@ -15,6 +15,6 @@ namespace RustPlus_Automation
         public float BaseLocationY { get; set; }
         public float Radius { get; set; }
         public uint SmartSwitchId { get; set; }
+        public bool SmartSwitchStateToSet { get; set; }
     }
-
 }

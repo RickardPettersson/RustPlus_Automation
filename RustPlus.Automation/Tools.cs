@@ -228,7 +228,7 @@ namespace RustPlus_Automation
             listener.Disconnect();
         }
 
-        public static async Task AutomationTurnOffSmartSwitch(RustPlus rustPlus, ulong steamId, float baseLocationX, float baseLocationY, float radius, uint smartSwitchId)
+        public static async Task AutomationTurnOffSmartSwitch(RustPlus rustPlus, ulong steamId, float baseLocationX, float baseLocationY, float radius, uint smartSwitchId, bool smartSwitchStateToSet)
         {
 
             rustPlus.Connected += RustPlus_Connected;
@@ -350,13 +350,29 @@ namespace RustPlus_Automation
                     {
                         if (smartSwitchState)
                         {
-                            Console.WriteLine("Not in the range of your base, turn off the smart switch");
+                            if (smartSwitchStateToSet)
+                            {
+                                // Do nothing the smart switch is already on
+                            }
+                            else
+                            {
+                                Console.WriteLine("Not in the range of your base, turn off the smart switch");
 
-                            var trigswitch = await rustPlus.SetSmartSwitchValueAsync(smartSwitchId, false);
+                                var trigswitch = await rustPlus.SetSmartSwitchValueAsync(smartSwitchId, false);
+                            }
                         }
                         else
                         {
-                            //Console.WriteLine("Not in the range of your base, but the smart switch is already off");
+                            if (smartSwitchStateToSet)
+                            {
+                                Console.WriteLine("Not in the range of your base, turn on the smart switch");
+
+                                var trigswitch = await rustPlus.SetSmartSwitchValueAsync(smartSwitchId, true);
+                            }
+                            else
+                            {
+                                // Do nothing the smart switch is already off
+                            }
                         }
                     }
                 }

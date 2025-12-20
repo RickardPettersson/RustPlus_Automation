@@ -77,7 +77,7 @@ if (args.Length > 0)
             var rustPlus = new RustPlus(appSettings.ServerIP, appSettings.RustPlusPort, appSettings.SteamId, appSettings.PlayerToken, false);
 
             // Start the autoamtion to automatic turn of smart switch when player position is out of the radius of base position
-            await Tools.AutomationTurnOffSmartSwitch(rustPlus, appSettings.SteamId, appSettings.BaseLocationX, appSettings.BaseLocationY, appSettings.Radius, appSettings.SmartSwitchId);
+            await Tools.AutomationTurnOffSmartSwitch(rustPlus, appSettings.SteamId, appSettings.BaseLocationX, appSettings.BaseLocationY, appSettings.Radius, appSettings.SmartSwitchId, appSettings.SmartSwitchStateToSet);
         }
     }
     else

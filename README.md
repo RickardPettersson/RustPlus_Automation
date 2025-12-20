@@ -17,6 +17,7 @@ Provide settings in `appsettings.json` under the `AppSettings` section. Required
 - `BaseLocationY` — You base position Y coordinate
 - `Radius` — Radius for proximity checks, this is number of pixels on the rust game server map as image
 - `SmartSwitchId` — Device id of smart switch to toggle (automation)
+- `SmartSwitchStateToSet` — What state you like the smart switch to be on when you leave your base? true = on, false = off
 
 
 ## How to get all configuration values
